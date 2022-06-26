@@ -27,7 +27,6 @@ DistanciasAll2=np.zeros(6, dtype=float)
 #nlist contains the values of the number of pedestrians for which the simulations are going to be ran
 nlist=np.ones(1, dtype=int)
 nlist*=100
-result=[]
 allMeanSpeed=[]
 allMeanSpeed2=[]
 for n in nlist:
