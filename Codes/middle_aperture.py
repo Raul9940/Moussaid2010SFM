@@ -58,6 +58,7 @@ for n in nlist:
     a=np.empty((n, 6), dtype=float)
     checkerCondicionesIniciales=True
     counterCheckerCondicionesIniciales=0
+    #Initial conditions of the pedestrians
     while checkerCondicionesIniciales and counterCheckerCondicionesIniciales<101:
         counterCheckerCondicionesIniciales+=1
         if counterCheckerCondicionesIniciales>99:
