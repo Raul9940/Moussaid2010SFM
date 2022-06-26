@@ -1,0 +1,48 @@
+As an input the code takes the following variables:
+-nlist: Vector whose length coincides with the amount of simulations that want to be run independently in the same code, and the number of each entry is the number of pedestrians in the simulation.
+-n2: Number of groups of size 2.
+-n3: Number of groups of size 3.
+-n4: Number of groups of size 4.
+-vmaxCoef: Coefficient multiplying the desired velocity which sets the maximum velocity module a pedestrian can have.
+-width: Width of the corridor.
+-length: Length of the corridor.
+-[ONLY IN middle_aperture.py] anchura: width of each of the two walls placed in the middle of the corridor to vary its width in this location.
+-tau: Parameter \tau present in the Goal Force [1].
+-aparam: Parameter a present in the Pedestrian-wall repulsion force [1].
+-b: Parameter b present in the Pedestrian-wall repulsion force [1].
+-lamb: Parameter \lambda part of the vector \vec{t}_{ij} in the pedestrian-pedestrian respulsion force [2].
+-amayusc: Parameter A part of the pedestrian-pedestrian repulsion force [2].
+-gamma: Parameter \gamma part of the pedestrian-pedestrian repulsion force [2].
+-nparam: Parameter n part of the pedestrian-pedestrian repulsion force [2].
+-nPrimerparam: Parameter n' part of the pedestrian-pedestrian repulsion force [2].
+-epsilon: Parameter \epsilon, accounting for overtaking direction preference,  part of the pedestrian-pedestrian repulsion force [2].
+-phi: Parameter \phi (range of vision of the pedestrians) present in the gazing force [1].
+-beta1: Parameter \beta_1 present in the gazing force [1].
+-beta2: Parameter \beta_2 present in the group attractive force [1].
+-beta3: Parameter \beta_3 present in the group repulsive force [1].
+-PersonalLim: Parameter d_0 present in the group repulsive force [1].
+-hstep: Timestep.
+-tmax: Maximum time the simulation runs for.
+-lambProb: Parameter of the distribution that gives the percentage of people belonging to a group of each size [1] (unused by default).
+
+The program outputs, for each element of nlist, the following elements:
+-[ONLY IN middle_aperture.py] Prints the time taken by 90% of the pedestrians to cross the middle aperture
+-AngulosAll: average of the angle between members of the groups. Angles are given in the same order as in the second row of Table 1 in [1].
+-AngulosAll2: average of the square of the angle between members of the groups. Order is the same as in AngulosAll.
+-DistanciasAll: average of the distance between members of the groups. Distances are given in the same order as in the second row of Table 1 in [1].
+-AngulosAll2: average of the square of the distance between members of the groups. Order is the same as in DistanciasAll.
+-allMeanSpeed: Vector with the average velocity at each timestep.
+-allMeanSpeed2: Vector with the square of the average velocity at each timestep.
+-A visual representation of the area with the pedestrians is plotted at each timestep. Dots represent pedestrians and black lines walls. Blue pedestrians move from left to right and red from right to left. Members of the same groups are connected by lines. Size is proportional to velocity of the pedestrian. Frames are saved as .png
+
+
+The program can raise up to three warnings, that if so they are printed in the terminal:
+-'Angle out of bounds...'. For computational resons the value inside the arccos sometimes is slighlty larger, in absolute value, than 1. A correction is made so that the program can continue running.
+-'Unable to fit all pedestrians so they mantain enough distance'. After 100 trials of initial conditions, at least a pair of pedestrians do not respect a minimum distance between them (set arbitrarily to be 0.35).
+-'Some force goes to infinity'. Some force diverges, this does not give an error as if so a correction is made so that velocities and positions are not updated according to such diverging force.
+
+If the user is willing any of this warnings to stop the simulation, print() statement should be changed by sys.exit() one.
+
+
+[1] M. Moussaïd, N. Perozo, S. Gaminer, D. Helbing and G. Theraulaz. The walking behaviour of pedestrian social groups and impact on crowd dynamics. PloS one 5(4). 2010.
+[2] M. Moussaïd, D. Helbing, S. Garnier, A. Johansson, M. Combe and G. Theraulaz. Experimental study of the beahvioural mechanisms underlaying self-organization in human crowd. Proc. R. Soc. B 276, 2755–2762. 2009.
