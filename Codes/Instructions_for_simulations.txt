@@ -25,6 +25,14 @@ As an input the code takes the following variables:
 -tmax: Maximum time the simulation runs for.
 -lambProb: Parameter of the distribution that gives the percentage of people belonging to a group of each size [1] (unused by default).
 
+The a matrix carries the initial conditions for each pedestrians (and then evolves to contain the variables of each pedestrian at each time step):
+--Column 0: Contains whether the pedestrian moves from left to right (1), or from right to left (-1)
+--Column 1: X position of the pedestrian (initially set to be anywhere in the region for empty_corridor.py and in one of the ends for middle_aperture.py)
+--Column 2: Y position of the pedestrian (initially set to be anywhere in the region)
+--Column 3: Velocity in the x axis (initially set to be selected from a normal distribution of mean 1.3 m/s and variance 0.2 m/s)
+--Column 4: Velocity in the y axis (initially set to be 0)
+--Column 5: Desired velocity (initially set to be the initial velocity in the x axis)
+
 The program outputs, for each element of nlist, the following elements:
 -[ONLY IN middle_aperture.py] Prints the time taken by 90% of the pedestrians to cross the middle aperture
 -AngulosAll: average of the angle between members of the groups. Angles are given in the same order as in the second row of Table 1 in [1].
