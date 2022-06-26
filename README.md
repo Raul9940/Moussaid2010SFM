@@ -1,7 +1,7 @@
 # Moussaid2010SFM
 Library with codes simulate the Moussaid et al. extension on the Social Force Model introduced in 2010.
 
-This model is based in the original Social Force Model introduced in 1995 by D. Helbing and P. Molnár [1], with the addition of pedestrians now walking in groups. The model is presented in [2].
+This model is based in the original Social Force Model introduced in 1995 by D. Helbing and P. Molnár [1], with the addition of pedestrians walking in groups. The model is presented in [2].
 
 For now, there are two different configurations of the walkable area that can be run:
 
